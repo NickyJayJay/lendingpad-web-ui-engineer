@@ -1,0 +1,42 @@
+// =============================================================================
+// Light theme
+// =============================================================================
+// Re-emits the color tokens as CSS custom properties so components can consume
+// them via var(--color-*) without importing SCSS modules. A second theme would
+// live in its own partial and set the same variables under a theming selector
+// like [data-theme='dark'].
+//
+// Non-color tokens (spacing, typography, radii, shadows) stay as plain SCSS
+// variables — they rarely change per theme, so the indirection isn't worth it.
+
+@use '../tokens/colors' as c;
+
+:root {
+  --color-primary: #{c.$color-primary};
+  --color-primary-hover: #{c.$color-primary-hover};
+
+  --color-bg: #{c.$color-bg};
+  --color-surface: #{c.$color-surface};
+  --color-surface-hover: #{c.$color-surface-hover};
+  --color-border: #{c.$color-border};
+  --color-border-strong: #{c.$color-border-strong};
+
+  --color-text-primary: #{c.$color-text-primary};
+  --color-text-secondary: #{c.$color-text-secondary};
+  --color-text-muted: #{c.$color-text-muted};
+  --color-text-on-primary: #{c.$color-text-on-primary};
+
+  --color-badge-open-bg: #{c.$color-badge-open-bg};
+  --color-badge-open-text: #{c.$color-badge-open-text};
+  --color-badge-paid-bg: #{c.$color-badge-paid-bg};
+  --color-badge-paid-text: #{c.$color-badge-paid-text};
+  --color-badge-inactive-bg: #{c.$color-badge-inactive-bg};
+  --color-badge-inactive-text: #{c.$color-badge-inactive-text};
+  --color-badge-due-bg: #{c.$color-badge-due-bg};
+  --color-badge-due-text: #{c.$color-badge-due-text};
+
+  --color-balance-negative: #{c.$color-balance-negative};
+  --color-balance-positive: #{c.$color-balance-positive};
+
+  --color-focus-ring: #{c.$color-focus-ring};
+}

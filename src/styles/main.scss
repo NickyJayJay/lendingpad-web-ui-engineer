@@ -1,1 +1,9 @@
-// Entry stylesheet. Partials are wired up in Phase 2 and later.
+// Entry stylesheet. Load order matters:
+//   1. Theme  — defines CSS custom properties on :root.
+//   2. Base   — reset + element defaults that consume those properties.
+//   3. (Phase 3+) Utilities — icon font.
+//   4. (Phase 4+) Components — one partial per UI component, BEM naming.
+
+@use "themes/light";
+@use "base/reset";
+@use "base/typography";

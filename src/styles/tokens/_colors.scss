@@ -1,0 +1,40 @@
+// =============================================================================
+// Color tokens
+// =============================================================================
+
+// Brand -----------------------------------------------------------------------
+$color-primary: #3d70d2;
+$color-primary-hover: #3d6ee8;
+
+// Surfaces --------------------------------------------------------------------
+$color-bg: #e5e5e5;
+$color-surface: #ffffff;
+$color-surface-hover: #f1f4f8;
+$color-border: #e9edf5;
+$color-border-strong: #d8dbe2;
+
+// Text ------------------------------------------------------------------------
+$color-text-primary: #171c26;
+$color-text-secondary: #868fa0;
+$color-text-muted: #464f60;
+$color-text-on-primary: #ffffff;
+
+// Status badges (bg + text pair per status) -----------------------------------
+$color-badge-open-bg: #e4f1ff;
+$color-badge-open-text: #496ee9;
+
+$color-badge-paid-bg: #e1fcef;
+$color-badge-paid-text: #14804a;
+
+$color-badge-inactive-bg: #e9edf5;
+$color-badge-inactive-text: #5a6376;
+
+$color-badge-due-bg: #faf0f3;
+$color-badge-due-text: #e20038;
+
+// Numeric emphasis (balance column) -------------------------------------------
+$color-balance-negative: #e20038;
+$color-balance-positive: #14804a;
+
+// Focus ring ------------------------------------------------------------------
+$color-focus-ring: rgba(79, 128, 255, 0.35);

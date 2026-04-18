@@ -1,0 +1,10 @@
+@use '../tokens/typography' as t;
+
+body {
+  font-family: t.$font-family-base;
+  font-size: t.$font-size-base;
+  font-weight: t.$font-weight-regular;
+  line-height: t.$line-height-base;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+}
