@@ -1,0 +1,27 @@
+{
+  "name": "lendingpad-web-ui-engineer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "LendingPad Senior UI/UX Engineer sample task — user management table built with HTML, SCSS (BEM), and a custom icon font.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "icons:optimize": "svgo -f assets/svg --config svgo.config.cjs",
+    "icons:generate": "fantasticon -c fantasticon.config.cjs",
+    "icons": "npm run icons:optimize && npm run icons:generate"
+  },
+  "devDependencies": {
+    "fantasticon": "^3.0.0",
+    "sass": "^1.81.0",
+    "svgo": "^3.3.2",
+    "vite": "^5.4.11"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
+}
