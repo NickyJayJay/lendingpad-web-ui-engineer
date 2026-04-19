@@ -15,6 +15,13 @@
 @use '../tokens/typography' as t;
 @use '../tokens/spacing' as s;
 @use '../tokens/radii' as r;
+@use '../tokens/breakpoints' as bp;
+
+// Horizontal-scroll wrapper around the table. Kicks in at widths where the
+// table is too wide to fit but too wide to collapse to cards (i.e. tablet).
+.table-scroll {
+  overflow-x: auto;
+}
 
 .table {
   width: 100%;
@@ -125,4 +132,97 @@
 
 .table__cell--balance-positive {
   color: var(--color-balance-positive);
+}
+
+// Tablet — drop the widest, lowest-info column so the rest can breathe.
+@media (max-width: (bp.$breakpoint-md - 1px)) {
+  .table__cell--description {
+    display: none;
+  }
+}
+
+// Mobile — transform each row into a stacked card. Header row is hidden;
+// each <td> uses its data-label attribute to label the value inline.
+@media (max-width: (bp.$breakpoint-sm - 1px)) {
+  .table {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .table__head {
+    display: none;
+  }
+
+  .table__body,
+  .table__row,
+  .table__cell {
+    display: block;
+    width: 100%;
+  }
+
+  .table__row {
+    margin-bottom: s.$space-3;
+    padding: s.$space-3;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: r.$radius-md;
+  }
+
+  .table__cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: s.$space-3;
+    padding: s.$space-1 0;
+    text-align: right;
+  }
+
+  .table__cell::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+    font-size: t.$font-size-xs;
+    font-weight: t.$font-weight-semibold;
+    letter-spacing: t.$letter-spacing-wide;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  // Name cell gets visual prominence and no label prefix.
+  .table__cell--name {
+    justify-content: flex-start;
+    padding-bottom: s.$space-2;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: s.$space-2;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .table__cell--select,
+  .table__cell--actions {
+    width: auto;
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  // Float the actions menu into the name row on mobile.
+  .table__cell--actions {
+    position: absolute;
+    top: s.$space-3;
+    right: s.$space-3;
+  }
+
+  .table__row {
+    position: relative;
+  }
+
+  .table__cell--numeric {
+    text-align: right;
+  }
 }

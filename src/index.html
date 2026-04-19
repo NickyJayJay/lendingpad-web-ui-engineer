@@ -12,159 +12,499 @@
 </head>
 
 <body>
-  <main id="app" style="padding:24px;display:grid;gap:24px;max-width:1200px;margin:0 auto;">
-    <!-- TEMP Phase 4 component preview — remove when Phase 5 lands -->
+  <main id="app" class="page">
+    <header>
+      <h1 class="page__title">Users</h1>
+    </header>
 
-    <section style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
-      <button class="btn btn--primary"><i class="icon icon--plus" aria-hidden="true"></i> Add User</button>
-      <button class="btn btn--ghost">Cancel</button>
-      <button class="btn btn--icon" aria-label="Filter"><i class="icon icon--filter" aria-hidden="true"></i></button>
-      <button class="btn btn--icon" aria-label="Edit"><i class="icon icon--pencil" aria-hidden="true"></i></button>
-      <button class="btn btn--icon" aria-label="More actions"><i class="icon icon--three-vertical-dots" aria-hidden="true"></i></button>
-    </section>
+    <section class="page__panel" aria-labelledby="users-title">
+      <h2 id="users-title" class="u-sr-only">User list</h2>
 
-    <section style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
-      <label class="input input--search">
-        <i class="icon icon--search input__icon" aria-hidden="true"></i>
-        <input class="input__control" type="search" placeholder="Search users" />
-      </label>
-
-      <label class="checkbox">
-        <input class="checkbox__input" type="checkbox" />
-        <span class="checkbox__box" aria-hidden="true"></span>
-      </label>
-
-      <label class="checkbox">
-        <input class="checkbox__input" type="checkbox" checked />
-        <span class="checkbox__box" aria-hidden="true"></span>
-      </label>
-    </section>
-
-    <section style="display:flex;flex-wrap:wrap;gap:8px;">
-      <span class="badge badge--open">Customer</span>
-      <span class="badge badge--paid">Paid</span>
-      <span class="badge badge--inactive">Inactive</span>
-      <span class="badge badge--due">Past Due</span>
-    </section>
-
-    <section style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
-      <div class="avatar">
-        <span class="avatar__fallback">NJ</span>
-        <button class="avatar__edit" aria-label="Edit avatar">
-          <i class="icon icon--pencil" aria-hidden="true"></i>
-        </button>
-      </div>
-
-      <div class="dropdown">
-        <button class="btn btn--icon" aria-haspopup="menu" aria-expanded="true" aria-label="Row actions">
-          <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
-        </button>
-        <div class="dropdown__menu" role="menu">
-          <button class="dropdown__item" role="menuitem"><i class="icon icon--pencil" aria-hidden="true"></i> Edit</button>
-          <button class="dropdown__item" role="menuitem"><i class="icon icon--send-email" aria-hidden="true"></i> Send email</button>
-          <button class="dropdown__item" role="menuitem"><i class="icon icon--invite-consumer" aria-hidden="true"></i> Invite consumer</button>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="toolbar">
-        <label class="input input--search">
-          <i class="icon icon--search input__icon" aria-hidden="true"></i>
-          <input class="input__control" type="search" placeholder="Search" />
-        </label>
-        <button class="btn btn--icon" aria-label="Filter">
+      <div class="toolbar" role="search">
+        <button class="btn btn--icon" type="button" aria-label="Filter">
           <i class="icon icon--filter" aria-hidden="true"></i>
         </button>
+
+        <label class="input input--search">
+          <i class="icon icon--search input__icon" aria-hidden="true"></i>
+          <span class="u-sr-only">Search users</span>
+          <input class="input__control" type="search" placeholder="Search" />
+        </label>
+
         <div class="toolbar__group toolbar__group--end">
-          <button class="btn btn--primary">
-            <i class="icon icon--plus" aria-hidden="true"></i> Add User
+          <button class="btn btn--primary" type="button">
+            <i class="icon icon--plus" aria-hidden="true"></i>
+            Add User
           </button>
         </div>
       </div>
 
-      <table class="table">
-        <thead class="table__head">
-          <tr class="table__row">
-            <th class="table__cell table__cell--head table__cell--select" scope="col">
-              <label class="checkbox">
-                <input class="checkbox__input" type="checkbox" aria-label="Select all" />
-                <span class="checkbox__box" aria-hidden="true"></span>
-              </label>
-            </th>
-            <th class="table__cell table__cell--head" scope="col">
-              <button class="table__sort" aria-sort="ascending">
-                Name
-                <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
-              </button>
-            </th>
-            <th class="table__cell table__cell--head" scope="col">Status</th>
-            <th class="table__cell table__cell--head table__cell--numeric" scope="col">Balance</th>
-            <th class="table__cell table__cell--head table__cell--actions" scope="col" aria-label="Actions"></th>
-          </tr>
-        </thead>
-        <tbody class="table__body">
-          <tr class="table__row">
-            <td class="table__cell table__cell--select">
-              <label class="checkbox">
-                <input class="checkbox__input" type="checkbox" aria-label="Select row" />
-                <span class="checkbox__box" aria-hidden="true"></span>
-              </label>
-            </td>
-            <td class="table__cell">
-              <div class="table__name-row">
-                <div class="avatar"><span class="avatar__fallback">JD</span></div>
-                <div class="table__name">
-                  <span class="table__name-primary">Jane Doe</span>
-                  <span class="table__name-secondary">ID #10294</span>
+      <div class="table-scroll" role="region" aria-label="Users table" tabindex="0">
+        <table class="table">
+          <thead class="table__head">
+            <tr class="table__row">
+              <th class="table__cell table__cell--head table__cell--select" scope="col">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select all rows" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </th>
+              <th class="table__cell table__cell--head" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Name
+                  <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--description" scope="col">Description</th>
+              <th class="table__cell table__cell--head" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Status
+                  <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Date
+                  <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--numeric" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Balance
+                  <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--numeric" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Deposit
+                  <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--actions" scope="col" aria-label="Row actions"></th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">AS</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Alex Smith">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Alex Smith</span>
+                    <span class="table__name-secondary">ID #10294</span>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td class="table__cell"><span class="badge badge--open">Customer</span></td>
-            <td class="table__cell table__cell--numeric table__cell--balance-positive">$1,248.00</td>
-            <td class="table__cell table__cell--actions">
-              <button class="btn btn--icon" aria-label="Row actions"><i class="icon icon--three-vertical-dots" aria-hidden="true"></i></button>
-            </td>
-          </tr>
-          <tr class="table__row">
-            <td class="table__cell table__cell--select">
-              <label class="checkbox">
-                <input class="checkbox__input" type="checkbox" aria-label="Select row" />
-                <span class="checkbox__box" aria-hidden="true"></span>
-              </label>
-            </td>
-            <td class="table__cell">
-              <div class="table__name-row">
-                <div class="avatar"><span class="avatar__fallback">MS</span></div>
-                <div class="table__name">
-                  <span class="table__name-primary">Marcus Smith</span>
-                  <span class="table__name-secondary">ID #10295</span>
-                </div>
-              </div>
-            </td>
-            <td class="table__cell"><span class="badge badge--due">Past Due</span></td>
-            <td class="table__cell table__cell--numeric table__cell--balance-negative">-$420.00</td>
-            <td class="table__cell table__cell--actions">
-              <button class="btn btn--icon" aria-label="Row actions"><i class="icon icon--three-vertical-dots" aria-hidden="true"></i></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet, consectetur.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--open">Open</span></td>
+              <td class="table__cell" data-label="Date">07/06/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$1,248.00</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$520.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
 
-      <div class="pagination">
-        <div class="pagination__group">
-          <span class="pagination__label">Rows per page:</span>
-          <button class="btn btn--ghost" aria-haspopup="menu">10 <i class="icon icon--page-down" aria-hidden="true"></i></button>
-        </div>
-        <div class="pagination__group">
-          <span class="pagination__label">1–10 of 97</span>
-        </div>
-        <div class="pagination__group">
-          <button class="btn btn--icon" aria-label="Previous page"><i class="icon icon--page-left" aria-hidden="true"></i></button>
-          <span class="pagination__page">1/10</span>
-          <button class="btn btn--icon" aria-label="Next page"><i class="icon icon--page-right" aria-hidden="true"></i></button>
-        </div>
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">AM</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Amadeus Mozart">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Amadeus Mozart</span>
+                    <span class="table__name-secondary">ID #10295</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Consectetur adipiscing elit, sed do.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell" data-label="Date">07/05/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">-$420.00</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$70.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">JK</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit John Kraus">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">John Kraus</span>
+                    <span class="table__name-secondary">ID #10296</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Sed do eiusmod tempor incididunt ut.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--inactive">Inactive</span></td>
+              <td class="table__cell" data-label="Date">07/04/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$3,890.50</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$1,200.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">OB</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Olivia Bennett">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Olivia Bennett</span>
+                    <span class="table__name-secondary">ID #10297</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Ut labore et dolore magna aliqua.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--due">Past Due</span></td>
+              <td class="table__cell" data-label="Date">07/04/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">-$185.25</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$250.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">EP</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Ethan Parker">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Ethan Parker</span>
+                    <span class="table__name-secondary">ID #10298</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Aliqua ut enim ad minim veniam.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell" data-label="Date">07/03/24</td>
+              <td class="table__cell table__cell--numeric" data-label="Balance">$0.00</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$840.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">LF</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Liam Foster">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Liam Foster</span>
+                    <span class="table__name-secondary">ID #10299</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Quis nostrud exercitation ullamco.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--open">Open</span></td>
+              <td class="table__cell" data-label="Date">07/02/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$2,145.75</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$480.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">AM</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Ava Mitchell">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Ava Mitchell</span>
+                    <span class="table__name-secondary">ID #10300</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Laboris nisi ut aliquip ex ea.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--due">Past Due</span></td>
+              <td class="table__cell" data-label="Date">07/02/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">-$52.10</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$95.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">NR</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Noah Reynolds">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Noah Reynolds</span>
+                    <span class="table__name-secondary">ID #10301</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Commodo consequat duis aute irure.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell" data-label="Date">07/01/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$670.00</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$350.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">MC</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Mason Carter">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Mason Carter</span>
+                    <span class="table__name-secondary">ID #10302</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Dolor in reprehenderit in voluptate.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--inactive">Inactive</span></td>
+              <td class="table__cell" data-label="Date">06/30/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$1,800.25</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$600.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">SH</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Sophia Hayes">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Sophia Hayes</span>
+                    <span class="table__name-secondary">ID #10303</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Velit esse cillum dolore eu fugiat.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--open">Open</span></td>
+              <td class="table__cell" data-label="Date">06/29/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$990.50</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$200.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">IM</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Isabella Moore">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Isabella Moore</span>
+                    <span class="table__name-secondary">ID #10304</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Nulla pariatur excepteur sint occaecat.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell" data-label="Date">06/28/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">$420.00</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$100.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name-row">
+                  <div class="avatar">
+                    <span class="avatar__fallback">LT</span>
+                    <button class="avatar__edit" type="button" aria-label="Edit Lucas Turner">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="table__name">
+                    <span class="table__name-primary">Lucas Turner</span>
+                    <span class="table__name-secondary">ID #10305</span>
+                  </div>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Cupidatat non proident sunt in culpa.</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--due">Past Due</span></td>
+              <td class="table__cell" data-label="Date">06/27/24</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">-$1,120.80</td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Deposit">$420.00</td>
+              <td class="table__cell table__cell--actions">
+                <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu" aria-expanded="false">
+                  <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <nav class="pagination" aria-label="Table pagination">
+        <div class="pagination__group">
+          <span class="pagination__status">1 of 10</span>
+        </div>
+
+        <div class="pagination__group pagination__group--end">
+          <span class="pagination__label">Rows per page:</span>
+          <div class="dropdown">
+            <button class="btn btn--ghost" type="button" aria-haspopup="menu" aria-expanded="false">
+              10
+              <i class="icon icon--page-down" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <button class="btn btn--icon" type="button" aria-label="Previous page">
+            <i class="icon icon--page-left" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn--icon" type="button" aria-label="Next page">
+            <i class="icon icon--page-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
     </section>
   </main>
   <script type="module" src="./js/main.js"></script>

@@ -1,0 +1,31 @@
+// Page
+// Outer layout wrapper for the app. Centers content, applies breathing room,
+// and tightens padding on small screens. The .page__panel stacks toolbar +
+// table + pagination into a single visual card (the partials already remove
+// adjoining borders so they read as one surface).
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+@use '../tokens/breakpoints' as bp;
+
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: s.$space-6 s.$space-6;
+  display: grid;
+  gap: s.$space-4;
+
+  @media (max-width: bp.$breakpoint-sm) {
+    padding: s.$space-3;
+  }
+}
+
+.page__title {
+  font-size: t.$font-size-lg;
+  font-weight: t.$font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.page__panel {
+  display: grid;
+}

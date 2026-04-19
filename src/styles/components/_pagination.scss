@@ -1,15 +1,17 @@
 // Pagination
-// Sits below the table. Three groups: rows-per-page selector, range label
-// ("1–10 of 97"), and prev/next with page indicator.
+// Sits below the table. Two groups: a left-aligned page status ("1 of 10")
+// and a right-aligned group containing the rows-per-page selector and
+// prev/next controls.
 
 @use '../tokens/typography' as t;
 @use '../tokens/spacing' as s;
+@use '../tokens/breakpoints' as bp;
 
 .pagination {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: s.$space-6;
+  justify-content: space-between;
+  gap: s.$space-4;
   padding: s.$space-3 s.$space-4;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -19,6 +21,10 @@
   font-size: t.$font-size-sm;
   color: var(--color-text-muted);
   flex-wrap: wrap;
+
+  @media (max-width: bp.$breakpoint-sm) {
+    justify-content: center;
+  }
 }
 
 .pagination__group {
@@ -27,13 +33,19 @@
   gap: s.$space-2;
 }
 
+.pagination__group--end {
+  margin-left: auto;
+
+  @media (max-width: bp.$breakpoint-sm) {
+    margin-left: 0;
+  }
+}
+
 .pagination__label {
   color: var(--color-text-muted);
 }
 
-.pagination__page {
-  min-width: 40px;
-  text-align: center;
+.pagination__status {
   color: var(--color-text-primary);
   font-weight: t.$font-weight-medium;
 }
