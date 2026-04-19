@@ -1,0 +1,67 @@
+// Dropdown
+// Generic anchored floating menu. Used by the row action (three-dot) button and
+// the rows-per-page selector. The trigger is a .btn; the menu uses absolute
+// positioning relative to the .dropdown block. JS toggles [hidden] on the menu.
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+@use '../tokens/radii' as r;
+@use '../tokens/shadows' as sh;
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + #{s.$space-1});
+  right: 0;
+  z-index: 20;
+  min-width: 160px;
+  padding: s.$space-1 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: r.$radius-md;
+  box-shadow: sh.$shadow-lg;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.dropdown__menu--start {
+  right: auto;
+  left: 0;
+}
+
+.dropdown__menu--above {
+  top: auto;
+  bottom: calc(100% + #{s.$space-1});
+}
+
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: s.$space-2;
+  width: 100%;
+  padding: s.$space-2 s.$space-3;
+  background: transparent;
+  border: 0;
+  font-family: t.$font-family-base;
+  font-size: t.$font-size-base;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-surface-hover);
+    outline: 0;
+  }
+}
+
+.dropdown__item--selected {
+  color: var(--color-primary);
+  font-weight: t.$font-weight-semibold;
+}

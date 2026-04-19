@@ -1,0 +1,29 @@
+// Toolbar
+// Row above the table containing search, filter, and add-user action. Uses
+// flex so items on the right (--end) can collapse onto a new line on narrow
+// viewports without overriding the order in markup.
+
+@use '../tokens/spacing' as s;
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: s.$space-3;
+  padding: s.$space-4;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-top-left-radius: s.$space-2;
+  border-top-right-radius: s.$space-2;
+  flex-wrap: wrap;
+}
+
+.toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: s.$space-3;
+}
+
+.toolbar__group--end {
+  margin-left: auto;
+}

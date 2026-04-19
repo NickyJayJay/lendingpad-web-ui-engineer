@@ -1,0 +1,38 @@
+// Badge
+// Pill-shaped status indicator. Each modifier swaps bg + text via CSS custom
+// properties so badge colors can be re-skinned by a theme.
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+@use '../tokens/radii' as r;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px s.$space-2;
+  border-radius: r.$radius-pill;
+  font-size: t.$font-size-sm;
+  font-weight: t.$font-weight-medium;
+  line-height: t.$line-height-tight;
+  white-space: nowrap;
+}
+
+.badge--open {
+  background: var(--color-badge-open-bg);
+  color: var(--color-badge-open-text);
+}
+
+.badge--paid {
+  background: var(--color-badge-paid-bg);
+  color: var(--color-badge-paid-text);
+}
+
+.badge--inactive {
+  background: var(--color-badge-inactive-bg);
+  color: var(--color-badge-inactive-text);
+}
+
+.badge--due {
+  background: var(--color-badge-due-bg);
+  color: var(--color-badge-due-text);
+}

@@ -1,0 +1,39 @@
+// Pagination
+// Sits below the table. Three groups: rows-per-page selector, range label
+// ("1–10 of 97"), and prev/next with page indicator.
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: s.$space-6;
+  padding: s.$space-3 s.$space-4;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 0;
+  border-bottom-left-radius: s.$space-2;
+  border-bottom-right-radius: s.$space-2;
+  font-size: t.$font-size-sm;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+
+.pagination__group {
+  display: flex;
+  align-items: center;
+  gap: s.$space-2;
+}
+
+.pagination__label {
+  color: var(--color-text-muted);
+}
+
+.pagination__page {
+  min-width: 40px;
+  text-align: center;
+  color: var(--color-text-primary);
+  font-weight: t.$font-weight-medium;
+}

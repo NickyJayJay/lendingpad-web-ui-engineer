@@ -12,22 +12,159 @@
 </head>
 
 <body>
-  <main id="app">
-    <!-- TEMP Phase 3 preview — remove when Phase 5 lands -->
-    <section style="padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;font-family:var(--font-family-base);">
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--search" aria-hidden="true" style="font-size:20px;"></i>search</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--filter" aria-hidden="true" style="font-size:20px;"></i>filter</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--plus" aria-hidden="true" style="font-size:20px;"></i>plus</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--pencil" aria-hidden="true" style="font-size:20px;"></i>pencil</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--three-vertical-dots" aria-hidden="true" style="font-size:20px;"></i>three-dots</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--up-sorting" aria-hidden="true" style="font-size:20px;"></i>up-sort</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--down-sorting" aria-hidden="true" style="font-size:20px;"></i>down-sort</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--page-left" aria-hidden="true" style="font-size:20px;"></i>page-left</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--page-right" aria-hidden="true" style="font-size:20px;"></i>page-right</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--page-down" aria-hidden="true" style="font-size:20px;"></i>page-down</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--invite-consumer" aria-hidden="true" style="font-size:20px;"></i>invite</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--send-email" aria-hidden="true" style="font-size:20px;"></i>send-email</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:14px;"><i class="icon icon--dollar-sign" aria-hidden="true" style="font-size:20px;"></i>dollar</div>
+  <main id="app" style="padding:24px;display:grid;gap:24px;max-width:1200px;margin:0 auto;">
+    <!-- TEMP Phase 4 component preview — remove when Phase 5 lands -->
+
+    <section style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <button class="btn btn--primary"><i class="icon icon--plus" aria-hidden="true"></i> Add User</button>
+      <button class="btn btn--ghost">Cancel</button>
+      <button class="btn btn--icon" aria-label="Filter"><i class="icon icon--filter" aria-hidden="true"></i></button>
+      <button class="btn btn--icon" aria-label="Edit"><i class="icon icon--pencil" aria-hidden="true"></i></button>
+      <button class="btn btn--icon" aria-label="More actions"><i class="icon icon--three-vertical-dots" aria-hidden="true"></i></button>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <label class="input input--search">
+        <i class="icon icon--search input__icon" aria-hidden="true"></i>
+        <input class="input__control" type="search" placeholder="Search users" />
+      </label>
+
+      <label class="checkbox">
+        <input class="checkbox__input" type="checkbox" />
+        <span class="checkbox__box" aria-hidden="true"></span>
+      </label>
+
+      <label class="checkbox">
+        <input class="checkbox__input" type="checkbox" checked />
+        <span class="checkbox__box" aria-hidden="true"></span>
+      </label>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span class="badge badge--open">Customer</span>
+      <span class="badge badge--paid">Paid</span>
+      <span class="badge badge--inactive">Inactive</span>
+      <span class="badge badge--due">Past Due</span>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+      <div class="avatar">
+        <span class="avatar__fallback">NJ</span>
+        <button class="avatar__edit" aria-label="Edit avatar">
+          <i class="icon icon--pencil" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn--icon" aria-haspopup="menu" aria-expanded="true" aria-label="Row actions">
+          <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown__menu" role="menu">
+          <button class="dropdown__item" role="menuitem"><i class="icon icon--pencil" aria-hidden="true"></i> Edit</button>
+          <button class="dropdown__item" role="menuitem"><i class="icon icon--send-email" aria-hidden="true"></i> Send email</button>
+          <button class="dropdown__item" role="menuitem"><i class="icon icon--invite-consumer" aria-hidden="true"></i> Invite consumer</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="toolbar">
+        <label class="input input--search">
+          <i class="icon icon--search input__icon" aria-hidden="true"></i>
+          <input class="input__control" type="search" placeholder="Search" />
+        </label>
+        <button class="btn btn--icon" aria-label="Filter">
+          <i class="icon icon--filter" aria-hidden="true"></i>
+        </button>
+        <div class="toolbar__group toolbar__group--end">
+          <button class="btn btn--primary">
+            <i class="icon icon--plus" aria-hidden="true"></i> Add User
+          </button>
+        </div>
+      </div>
+
+      <table class="table">
+        <thead class="table__head">
+          <tr class="table__row">
+            <th class="table__cell table__cell--head table__cell--select" scope="col">
+              <label class="checkbox">
+                <input class="checkbox__input" type="checkbox" aria-label="Select all" />
+                <span class="checkbox__box" aria-hidden="true"></span>
+              </label>
+            </th>
+            <th class="table__cell table__cell--head" scope="col">
+              <button class="table__sort" aria-sort="ascending">
+                Name
+                <i class="icon icon--up-sorting table__sort-icon" aria-hidden="true"></i>
+              </button>
+            </th>
+            <th class="table__cell table__cell--head" scope="col">Status</th>
+            <th class="table__cell table__cell--head table__cell--numeric" scope="col">Balance</th>
+            <th class="table__cell table__cell--head table__cell--actions" scope="col" aria-label="Actions"></th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr class="table__row">
+            <td class="table__cell table__cell--select">
+              <label class="checkbox">
+                <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                <span class="checkbox__box" aria-hidden="true"></span>
+              </label>
+            </td>
+            <td class="table__cell">
+              <div class="table__name-row">
+                <div class="avatar"><span class="avatar__fallback">JD</span></div>
+                <div class="table__name">
+                  <span class="table__name-primary">Jane Doe</span>
+                  <span class="table__name-secondary">ID #10294</span>
+                </div>
+              </div>
+            </td>
+            <td class="table__cell"><span class="badge badge--open">Customer</span></td>
+            <td class="table__cell table__cell--numeric table__cell--balance-positive">$1,248.00</td>
+            <td class="table__cell table__cell--actions">
+              <button class="btn btn--icon" aria-label="Row actions"><i class="icon icon--three-vertical-dots" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+          <tr class="table__row">
+            <td class="table__cell table__cell--select">
+              <label class="checkbox">
+                <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                <span class="checkbox__box" aria-hidden="true"></span>
+              </label>
+            </td>
+            <td class="table__cell">
+              <div class="table__name-row">
+                <div class="avatar"><span class="avatar__fallback">MS</span></div>
+                <div class="table__name">
+                  <span class="table__name-primary">Marcus Smith</span>
+                  <span class="table__name-secondary">ID #10295</span>
+                </div>
+              </div>
+            </td>
+            <td class="table__cell"><span class="badge badge--due">Past Due</span></td>
+            <td class="table__cell table__cell--numeric table__cell--balance-negative">-$420.00</td>
+            <td class="table__cell table__cell--actions">
+              <button class="btn btn--icon" aria-label="Row actions"><i class="icon icon--three-vertical-dots" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <div class="pagination__group">
+          <span class="pagination__label">Rows per page:</span>
+          <button class="btn btn--ghost" aria-haspopup="menu">10 <i class="icon icon--page-down" aria-hidden="true"></i></button>
+        </div>
+        <div class="pagination__group">
+          <span class="pagination__label">1–10 of 97</span>
+        </div>
+        <div class="pagination__group">
+          <button class="btn btn--icon" aria-label="Previous page"><i class="icon icon--page-left" aria-hidden="true"></i></button>
+          <span class="pagination__page">1/10</span>
+          <button class="btn btn--icon" aria-label="Next page"><i class="icon icon--page-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
     </section>
   </main>
   <script type="module" src="./js/main.js"></script>

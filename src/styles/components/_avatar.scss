@@ -1,0 +1,56 @@
+// Avatar
+// Circular image with an optional pencil affordance overlay used in the table's
+// name cell. Initials fallback is handled by the __fallback element when there
+// is no __img.
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  font-size: t.$font-size-sm;
+  font-weight: t.$font-weight-semibold;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar__fallback {
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.avatar__edit {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 8px;
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

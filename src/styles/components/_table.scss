@@ -1,0 +1,128 @@
+// Table
+// Elements:
+//   __head / __body — <thead>/<tbody>
+//   __row           — <tr>
+//   __cell          — <td> or <th> (--head applies thead styling when used on a th)
+//   __sort          — sortable header button inside a th
+//   __name          — name + id stack in the name column
+//   __name-primary / __name-secondary — the two lines
+// Modifiers:
+//   --numeric — right-aligned numeric cell
+//   --balance-negative / --balance-positive — colors the number
+//   --select — narrow checkbox column
+//   --actions — narrow action column
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+@use '../tokens/radii' as r;
+
+.table {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: r.$radius-md;
+  overflow: hidden;
+  font-size: t.$font-size-base;
+  color: var(--color-text-primary);
+}
+
+.table__head {
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  font-size: t.$font-size-sm;
+  font-weight: t.$font-weight-semibold;
+  letter-spacing: t.$letter-spacing-wide;
+  text-transform: uppercase;
+}
+
+.table__row {
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.table__body .table__row:hover {
+  background: var(--color-surface-hover);
+}
+
+.table__cell {
+  padding: s.$space-3 s.$space-4;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table__cell--head {
+  font-weight: inherit;
+  text-align: inherit;
+}
+
+.table__cell--select,
+.table__cell--actions {
+  width: 44px;
+  padding-left: s.$space-3;
+  padding-right: s.$space-3;
+}
+
+.table__cell--numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: s.$space-1;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.table__sort-icon {
+  font-size: t.$font-size-sm;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.table__sort[aria-sort="ascending"] .table__sort-icon,
+.table__sort[aria-sort="descending"] .table__sort-icon {
+  opacity: 1;
+  color: var(--color-text-primary);
+}
+
+.table__name {
+  display: flex;
+  flex-direction: column;
+  line-height: t.$line-height-tight;
+}
+
+.table__name-row {
+  display: flex;
+  align-items: center;
+  gap: s.$space-3;
+}
+
+.table__name-primary {
+  font-weight: t.$font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.table__name-secondary {
+  font-size: t.$font-size-sm;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.table__cell--balance-negative {
+  color: var(--color-balance-negative);
+}
+
+.table__cell--balance-positive {
+  color: var(--color-balance-positive);
+}

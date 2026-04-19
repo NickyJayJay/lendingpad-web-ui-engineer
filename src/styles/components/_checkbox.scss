@@ -1,0 +1,74 @@
+// Checkbox
+// Native <input type="checkbox"> stays in the DOM for a11y/form submission, but
+// is visually replaced by .checkbox__box which we style directly. The checkmark
+// is a CSS shape (rotated rectangle) to avoid an extra icon dependency.
+
+@use '../tokens/spacing' as s;
+@use '../tokens/radii' as r;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: inherit;
+}
+
+.checkbox__box {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: r.$radius-sm;
+  background: var(--color-surface);
+  transition: background-color 120ms ease, border-color 120ms ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: none;
+    margin: auto;
+    width: 5px;
+    height: 9px;
+    border: solid var(--color-text-on-primary);
+    border-width: 0 2px 2px 0;
+    transform: translateY(-1px) rotate(45deg);
+  }
+}
+
+.checkbox__input:checked ~ .checkbox__box {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &::after {
+    display: block;
+  }
+}
+
+.checkbox__input:indeterminate ~ .checkbox__box {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &::after {
+    display: block;
+    width: 8px;
+    height: 0;
+    border-width: 0 0 2px 0;
+    transform: none;
+    top: 50%;
+  }
+}
+
+.checkbox__input:focus-visible ~ .checkbox__box {
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}

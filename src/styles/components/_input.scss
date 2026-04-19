@@ -1,0 +1,47 @@
+// Input
+// Block is a wrapper so we can compose a leading icon with the native control.
+// Elements: __icon (leading glyph), __control (the <input>).
+// Modifiers: --search tweaks the cursor hint on the wrapper.
+
+@use '../tokens/typography' as t;
+@use '../tokens/spacing' as s;
+@use '../tokens/radii' as r;
+
+.input {
+  display: inline-flex;
+  align-items: center;
+  gap: s.$space-2;
+  padding: s.$space-2 s.$space-3;
+  min-width: 240px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: r.$radius-md;
+  color: var(--color-text-primary);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-focus-ring);
+  }
+}
+
+.input__icon {
+  color: var(--color-text-secondary);
+  font-size: t.$font-size-lg;
+  flex-shrink: 0;
+}
+
+.input__control {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: t.$font-family-base;
+  font-size: t.$font-size-base;
+  color: inherit;
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+}
