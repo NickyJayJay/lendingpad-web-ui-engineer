@@ -1,0 +1,46 @@
+// Auto-generated from src/public/fonts/icons/icons.json — do not edit.
+// Regenerate via `npm run icons` after updating assets/svg/.
+
+@font-face {
+  font-family: "icons";
+  src:
+    url("/fonts/icons/icons.woff2") format("woff2"),
+    url("/fonts/icons/icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+$icons-map: (
+  "up-sorting": "\f101",
+  "three-vertical-dots": "\f102",
+  "send-email": "\f103",
+  "search": "\f104",
+  "plus": "\f105",
+  "pencil": "\f106",
+  "page-right": "\f107",
+  "page-left": "\f108",
+  "page-down": "\f109",
+  "invite-consumer": "\f10a",
+  "filter": "\f10b",
+  "down-sorting": "\f10c",
+  "dollar-sign": "\f10d"
+);
+
+.icon {
+  display: inline-block;
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@each $name, $codepoint in $icons-map {
+  .icon--#{$name}::before {
+    content: $codepoint;
+  }
+}

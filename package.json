@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "icons:optimize": "svgo -f assets/svg --config svgo.config.cjs",
     "icons:generate": "fantasticon -c fantasticon.config.cjs",
-    "icons": "npm run icons:optimize && npm run icons:generate"
+    "icons:scss": "node scripts/build-icons-scss.cjs",
+    "icons": "npm run icons:optimize && npm run icons:generate && npm run icons:scss"
   },
   "devDependencies": {
     "fantasticon": "^3.0.0",
