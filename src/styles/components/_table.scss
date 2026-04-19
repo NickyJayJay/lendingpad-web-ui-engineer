@@ -17,20 +17,15 @@
 @use '../tokens/radii' as r;
 @use '../tokens/breakpoints' as bp;
 
-// Horizontal-scroll wrapper around the table. Kicks in at widths where the
-// table is too wide to fit but too wide to collapse to cards (i.e. tablet).
-.table-scroll {
-  overflow-x: auto;
-}
-
 .table {
   width: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: r.$radius-md;
-  overflow: hidden;
   font-size: t.$font-size-base;
   color: var(--color-text-primary);
+  // No border-radius / overflow:hidden on the base table — it would clip the
+  // row-action dropdown menu. The visual rounded-card effect comes from the
+  // surrounding .toolbar (top corners) and .pagination (bottom corners).
 }
 
 .table__head {
