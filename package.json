@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "icons:optimize": "svgo -f assets/svg --config svgo.config.cjs",
+    "icons:optimize": "svgo -f src/assets/svg --config svgo.config.cjs",
     "icons:generate": "fantasticon -c fantasticon.config.cjs",
     "icons:scss": "node scripts/build-icons-scss.cjs",
     "icons": "npm run icons:optimize && npm run icons:generate && npm run icons:scss"

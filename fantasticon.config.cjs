@@ -7,7 +7,7 @@
 
 module.exports = {
   name: 'icons',
-  inputDir: './assets/svg',
+  inputDir: './src/assets/svg',
   // Fonts go into src/public/ so Vite serves them from the site root
   // (/fonts/icons/…) — the @font-face URL in the generated SCSS can stay
   // absolute, which sidesteps Sass/Vite relative-URL resolution across

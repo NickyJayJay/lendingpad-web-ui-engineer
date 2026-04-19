@@ -20,7 +20,7 @@ const entries = Object.entries(codepoints)
   .join(',\n');
 
 const scss = `// Auto-generated from src/public/fonts/icons/icons.json — do not edit.
-// Regenerate via \`npm run icons\` after updating assets/svg/.
+// Regenerate via \`npm run icons\` after updating src/assets/svg/.
 
 @font-face {
   font-family: "icons";
