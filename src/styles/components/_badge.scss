@@ -1,10 +1,6 @@
-// Badge
-// Pill-shaped status indicator. Each modifier swaps bg + text via CSS custom
-// properties so badge colors can be re-skinned by a theme.
-
-@use '../tokens/typography' as t;
-@use '../tokens/spacing' as s;
-@use '../tokens/radii' as r;
+@use "../tokens/typography" as t;
+@use "../tokens/spacing" as s;
+@use "../tokens/radii" as r;
 
 .badge {
   display: inline-flex;

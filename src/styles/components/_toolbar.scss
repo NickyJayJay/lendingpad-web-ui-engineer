@@ -1,9 +1,5 @@
-// Toolbar
-// Row above the table containing search, filter, and add-user action. Uses
-// flex so items on the right (--end) can collapse onto a new line on narrow
-// viewports without overriding the order in markup.
-
-@use '../tokens/spacing' as s;
+@use "../tokens/spacing" as s;
+@use "../tokens/breakpoints" as bp;
 
 .toolbar {
   display: flex;
@@ -16,6 +12,7 @@
   border-top-left-radius: s.$space-2;
   border-top-right-radius: s.$space-2;
   flex-wrap: wrap;
+  background: var(--color-bg-secondary);
 }
 
 .toolbar__group {
@@ -26,4 +23,41 @@
 
 .toolbar__group--end {
   margin-left: auto;
+}
+
+@media (max-width: bp.$breakpoint-sm) {
+  .toolbar {
+    border-radius: 0;
+    border: 0;
+    padding: s.$space-4 0;
+    flex-wrap: nowrap;
+
+    > .btn--icon {
+      width: 40px;
+      height: 32px;
+      flex: 0 0 auto;
+    }
+
+    .input--search {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .input--search .input__icon {
+      display: none;
+    }
+
+    .toolbar__group--end {
+      flex: 0 0 auto;
+    }
+
+    .toolbar__group--end .icon--plus {
+      display: none;
+    }
+
+    .toolbar__group--end .btn--primary {
+      width: 100%;
+    }
+  }
 }

@@ -1,21 +1,7 @@
-// Table
-// Elements:
-//   __head / __body — <thead>/<tbody>
-//   __row           — <tr>
-//   __cell          — <td> or <th> (--head applies thead styling when used on a th)
-//   __sort          — sortable header button inside a th
-//   __name          — name + id stack in the name column
-//   __name-primary / __name-secondary — the two lines
-// Modifiers:
-//   --numeric — right-aligned numeric cell
-//   --balance-negative / --balance-positive — colors the number
-//   --select — narrow checkbox column
-//   --actions — narrow action column
-
-@use '../tokens/typography' as t;
-@use '../tokens/spacing' as s;
-@use '../tokens/radii' as r;
-@use '../tokens/breakpoints' as bp;
+@use "../tokens/typography" as t;
+@use "../tokens/spacing" as s;
+@use "../tokens/radii" as r;
+@use "../tokens/breakpoints" as bp;
 
 .table {
   width: 100%;
@@ -23,41 +9,68 @@
   border: 1px solid var(--color-border);
   font-size: t.$font-size-base;
   color: var(--color-text-primary);
-  // No border-radius / overflow:hidden on the base table — it would clip the
-  // row-action dropdown menu. The visual rounded-card effect comes from the
-  // surrounding .toolbar (top corners) and .pagination (bottom corners).
+  border-top: 0;
+}
+
+@media (min-width: bp.$breakpoint-md) {
+  .table-container {
+    height: calc(100% - 52px);
+    overflow-y: scroll;
+    scroll-behavior: auto;
+  }
+
+  .table__cell--head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
 
 .table__head {
   background: var(--color-surface-hover);
   color: var(--color-text-muted);
-  font-size: t.$font-size-sm;
+  font-size: t.$font-size-xs;
   font-weight: t.$font-weight-semibold;
   letter-spacing: t.$letter-spacing-wide;
   text-transform: uppercase;
 }
 
-.table__row {
-  border-bottom: 1px solid var(--color-border);
-
-  &:last-child {
-    border-bottom: 0;
-  }
+.table__body {
+  border-top: 1px solid var(--color-border);
 }
 
-.table__body .table__row:hover {
-  background: var(--color-surface-hover);
+.table__row {
+  &:nth-child(even) {
+    background-color: var(--color-surface-hover);
+  }
 }
 
 .table__cell {
   padding: s.$space-3 s.$space-4;
   text-align: left;
   vertical-align: middle;
+
+  &--actions {
+    > .dropdown > .btn {
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+    }
+  }
+
+  &--name {
+    padding: 12px 0;
+  }
 }
 
 .table__cell--head {
   font-weight: inherit;
   text-align: inherit;
+  background: var(--color-bg-secondary);
+
+  &-name {
+    padding-left: 0;
+  }
 }
 
 .table__cell--select,
@@ -67,15 +80,94 @@
   padding-right: s.$space-3;
 }
 
+.table__cell--actions {
+  padding: s.$space-3 0;
+  text-align: right;
+}
+
+.table__cell--actions {
+  .dropdown__menu {
+    width: 210px;
+    height: 102px;
+    padding: 4px;
+
+    .dropdown__item {
+      padding: 5px 12px;
+      justify-content: space-between;
+      font-weight: t.$font-weight-medium;
+
+      &:nth-of-type(1) {
+        color: var(--color-primary);
+
+        .icon--invite-consumer::before {
+          font-size: 15px;
+        }
+      }
+
+      &:nth-of-type(2) {
+        color: var(--color-primary);
+
+        .icon--send-email::before {
+          font-size: 17px;
+        }
+      }
+
+      &:nth-of-type(3) {
+        color: var(--color-badge-paid-text);
+
+        .icon--dollar-sign {
+          margin-right: 5px;
+          &::before {
+            font-size: 17px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table__cell--num {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+  padding-left: s.$space-3;
+  padding-right: s.$space-3;
+}
+
+.table__num {
+  display: inline-flex;
+  align-items: center;
+
+  &-text {
+    color: var(--color-text-primary);
+    font-weight: t.$font-weight-medium;
+  }
+}
+
 .table__cell--numeric {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
+.table__currency {
+  display: block;
+  font-family: t.$font-family-base;
+  font-weight: t.$font-weight-regular;
+  font-size: t.$font-size-sm;
+  line-height: t.$line-height-base;
+  letter-spacing: t.$letter-spacing-wide;
+  text-align: right;
+  color: var(--color-text-secondary);
+}
+
+.table__cell--description {
+  max-width: 230px;
+  padding: 12px 0;
+}
+
 .table__sort {
   display: inline-flex;
   align-items: center;
-  gap: s.$space-1;
+  gap: s.$space-2;
   padding: 0;
   background: transparent;
   border: 0;
@@ -86,16 +178,31 @@
   cursor: pointer;
 }
 
-.table__sort-icon {
-  font-size: t.$font-size-sm;
-  opacity: 0;
-  transition: opacity 120ms ease;
+.table__sort-icons {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+  font-size: 6px;
+  gap: 1px;
 }
 
-.table__sort[aria-sort="ascending"] .table__sort-icon,
-.table__sort[aria-sort="descending"] .table__sort-icon {
+.table__sort-icon {
+  opacity: 0.45;
+  color: var(--color-text-muted);
+  transition:
+    opacity 120ms ease,
+    color 120ms ease;
+}
+
+.table__cell--head[aria-sort="ascending"] .table__sort-icon--up,
+.table__cell--head[aria-sort="descending"] .table__sort-icon--down {
   opacity: 1;
   color: var(--color-text-primary);
+}
+
+.table__cell--head[aria-sort="ascending"] .table__sort-icon--down,
+.table__cell--head[aria-sort="descending"] .table__sort-icon--up {
+  opacity: 0.2;
 }
 
 .table__name {
@@ -111,7 +218,7 @@
 }
 
 .table__name-primary {
-  font-weight: t.$font-weight-semibold;
+  font-weight: t.$font-weight-medium;
   color: var(--color-text-primary);
 }
 
@@ -131,22 +238,45 @@
 
 // Tablet — drop the widest, lowest-info column so the rest can breathe.
 @media (max-width: (bp.$breakpoint-md - 1px)) {
-  .table__cell--description {
+  .table__cell--description,
+  .table__cell--select {
     display: none;
   }
 }
 
-// Mobile — transform each row into a stacked card. Header row is hidden;
-// each <td> uses its data-label attribute to label the value inline.
 @media (max-width: (bp.$breakpoint-sm - 1px)) {
   .table {
+    display: block;
     border: 0;
     border-radius: 0;
     background: transparent;
+
+    &__name {
+      flex-direction: row;
+      gap: s.$space-2;
+    }
   }
 
-  .table__head {
+  .table__head,
+  .table__num-text {
     display: none;
+  }
+
+  .table__cell[data-label="Description"]::before,
+  .table__cell[data-label="Status"]::before,
+  .table__cell[data-label="Rate"]::before,
+  .table__cell[data-label="Balance"]::before,
+  .table__cell[data-label="Deposit"]::before {
+    content: attr(data-label) ":";
+    color: var(--color-text-muted);
+    font-size: t.$font-size-xs;
+    font-weight: t.$font-weight-semibold;
+    letter-spacing: t.$letter-spacing-wide;
+    text-transform: uppercase;
+  }
+
+  .table__body {
+    border-top: none;
   }
 
   .table__body,
@@ -173,18 +303,6 @@
     text-align: right;
   }
 
-  .table__cell::before {
-    content: attr(data-label);
-    flex-shrink: 0;
-    color: var(--color-text-secondary);
-    font-size: t.$font-size-xs;
-    font-weight: t.$font-weight-semibold;
-    letter-spacing: t.$letter-spacing-wide;
-    text-transform: uppercase;
-    text-align: left;
-  }
-
-  // Name cell gets visual prominence and no label prefix.
   .table__cell--name {
     justify-content: flex-start;
     padding-bottom: s.$space-2;
@@ -206,11 +324,19 @@
     }
   }
 
-  // Float the actions menu into the name row on mobile.
+  .table__cell--select {
+    display: none;
+  }
+
   .table__cell--actions {
     position: absolute;
     top: s.$space-3;
     right: s.$space-3;
+
+    > .dropdown > .btn {
+      padding-right: 0;
+      width: 0;
+    }
   }
 
   .table__row {
@@ -219,5 +345,15 @@
 
   .table__cell--numeric {
     text-align: right;
+
+    &::before {
+      margin-right: auto;
+    }
+  }
+
+  .table__cell--description {
+    max-width: 100%;
+    text-align: left;
+    align-items: baseline;
   }
 }

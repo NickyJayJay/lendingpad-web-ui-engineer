@@ -1,10 +1,8 @@
-// Button
-// Variants: --primary (filled), --ghost (text), --icon (square icon-only).
-// All variants share padding, radius, and font baseline from .btn.
-
-@use '../tokens/typography' as t;
-@use '../tokens/spacing' as s;
-@use '../tokens/radii' as r;
+@use "../tokens/typography" as t;
+@use "../tokens/spacing" as s;
+@use "../tokens/radii" as r;
+@use "../tokens/breakpoints" as bp;
+@use "../tokens/shadows" as sh;
 
 .btn {
   display: inline-flex;
@@ -36,30 +34,59 @@
 .btn--primary {
   background: var(--color-primary);
   color: var(--color-text-on-primary);
+  height: 32px;
+  width: 113px;
+  box-shadow: 0px 1px 0px 0px var(--color-secondary) inset;
+  border-radius: 6px;
 
   &:hover:not(:disabled) {
     background: var(--color-primary-hover);
+  }
+
+  > .icon--plus {
+    font-size: t.$font-size-sm;
   }
 }
 
 .btn--ghost {
   background: transparent;
-  border-color: var(--color-border-strong);
+  border: none;
   color: var(--color-text-primary);
 
   &:hover:not(:disabled) {
     background: var(--color-surface-hover);
   }
+
+  .icon--page-down {
+    font-size: t.$font-size-sm;
+  }
 }
 
 .btn--icon {
   padding: s.$space-2;
-  width: 32px;
+  width: 40px;
   height: 32px;
   color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border-width: 1px;
+  border-style: solid;
+  border-top-color: var(--color-border-top);
+  border-right-color: var(--color-border-right);
+  border-left-color: var(--color-border-bottom);
+  border-bottom-color: var(--color-border-left);
+  box-shadow: sh.$shadow-sm;
 
   &:hover:not(:disabled) {
     background: var(--color-surface-hover);
     color: var(--color-text-primary);
+  }
+
+  > .icon--filter {
+    font-size: t.$font-size-base;
+  }
+
+  @media (max-width: bp.$breakpoint-sm) {
+    width: 44px;
+    height: 44px;
   }
 }

@@ -1,8 +1,3 @@
-// Accessibility utilities.
-
-// Visually hide an element while keeping it available to screen readers.
-// Use on labels for icon-only controls that already have aria-label, or on
-// headings that should announce structure without being visible.
 .u-sr-only {
   position: absolute;
   width: 1px;

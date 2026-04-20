@@ -9,13 +9,15 @@
 // Non-color tokens (spacing, typography, radii, shadows) stay as plain SCSS
 // variables — they rarely change per theme, so the indirection isn't worth it.
 
-@use '../tokens/colors' as c;
+@use "../tokens/colors" as c;
 
 :root {
   --color-primary: #{c.$color-primary};
   --color-primary-hover: #{c.$color-primary-hover};
+  --color-secondary: #{c.$color-secondary};
 
   --color-bg: #{c.$color-bg};
+  --color-bg-secondary: #{c.$color-bg-secondary};
   --color-surface: #{c.$color-surface};
   --color-surface-hover: #{c.$color-surface-hover};
   --color-border: #{c.$color-border};
@@ -25,6 +27,11 @@
   --color-text-secondary: #{c.$color-text-secondary};
   --color-text-muted: #{c.$color-text-muted};
   --color-text-on-primary: #{c.$color-text-on-primary};
+
+  --color-border-top: #{c.$color-border-top};
+  --color-border-right: #{c.$color-border-right};
+  --color-border-bottom: #{c.$color-border-bottom};
+  --color-border-left: #{c.$color-border-left};
 
   --color-badge-open-bg: #{c.$color-badge-open-bg};
   --color-badge-open-text: #{c.$color-badge-open-text};

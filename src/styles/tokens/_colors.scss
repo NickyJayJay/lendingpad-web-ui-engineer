@@ -1,15 +1,13 @@
-// =============================================================================
-// Color tokens
-// =============================================================================
-
 // Brand -----------------------------------------------------------------------
 $color-primary: #3d70d2;
 $color-primary-hover: #3d6ee8;
+$color-secondary: #4b85fa;
 
 // Surfaces --------------------------------------------------------------------
 $color-bg: #e5e5e5;
+$color-bg-secondary: #f7faff;
 $color-surface: #ffffff;
-$color-surface-hover: #f1f4f8;
+$color-surface-hover: #f9fafc;
 $color-border: #e9edf5;
 $color-border-strong: #d8dbe2;
 
@@ -18,6 +16,12 @@ $color-text-primary: #171c26;
 $color-text-secondary: #868fa0;
 $color-text-muted: #464f60;
 $color-text-on-primary: #ffffff;
+
+// Borders ------------------------------------------------------------------------
+$color-border-top: #e0e1e5;
+$color-border-left: #c6c6c9;
+$color-border-bottom: #d6d8db;
+$color-border-right: #d6d8db;
 
 // Status badges (bg + text pair per status) -----------------------------------
 $color-badge-open-bg: #e4f1ff;

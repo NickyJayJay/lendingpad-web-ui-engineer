@@ -1,9 +1,6 @@
-// =============================================================================
-// Border radius tokens
-// =============================================================================
-
 $radius-none: 0;
-$radius-sm: 4px; // checkboxes, small inputs
+$radius-xs: 4px; // checkboxes, small inputs
+$radius-sm: 6px; // checkboxes, small inputs
 $radius-md: 8px; // buttons, inputs, cards
+$radius-pill: 10px; // status badges
 $radius-lg: 12px; // larger surfaces, popovers
-$radius-pill: 999px; // status badges

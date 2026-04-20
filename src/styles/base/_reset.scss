@@ -65,3 +65,17 @@ table {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+
+// Honor the OS-level reduced-motion preference. Killing transitions/animations
+// globally is the simplest correct implementation — our transitions are purely
+// decorative (hover fades, focus ring animations), so no feature relies on them.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

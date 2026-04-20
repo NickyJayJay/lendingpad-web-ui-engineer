@@ -26,7 +26,9 @@ initRowsPerPage();
 initPagination(10);
 
 // Sort headers — cycle none → ascending → descending → none. Clicking a
-// different header resets all other columns to none. Purely visual.
+// different header resets all other columns to none. Purely visual; the
+// stacked up/down chevron pair highlights the active direction via CSS
+// selectors on the parent <th>'s aria-sort attribute.
 function initSortHeaders() {
   const buttons = document.querySelectorAll('.table__sort');
   buttons.forEach((btn) => {
@@ -35,27 +37,18 @@ function initSortHeaders() {
       if (!th) return;
       const current = th.getAttribute('aria-sort');
       const next = current === 'none' ? 'ascending'
-                 : current === 'ascending' ? 'descending'
-                 : 'none';
+        : current === 'ascending' ? 'descending'
+          : 'none';
 
       buttons.forEach((other) => {
         if (other !== btn) {
           other.closest('[aria-sort]')?.setAttribute('aria-sort', 'none');
-          setSortIcon(other, 'none');
         }
       });
 
       th.setAttribute('aria-sort', next);
-      setSortIcon(btn, next);
     });
   });
-}
-
-function setSortIcon(button, state) {
-  const icon = button.querySelector('.table__sort-icon');
-  if (!icon) return;
-  icon.classList.remove('icon--up-sorting', 'icon--down-sorting');
-  icon.classList.add(state === 'descending' ? 'icon--down-sorting' : 'icon--up-sorting');
 }
 
 // Select-all — header checkbox mirrors state to all body rows and reflects
@@ -102,13 +95,13 @@ function initRowsPerPage() {
 function initPagination(totalPages) {
   const prev = document.querySelector('[data-pagination="prev"]');
   const next = document.querySelector('[data-pagination="next"]');
-  const status = document.querySelector('[data-pagination-status]');
+  const status = document.querySelectorAll('[data-pagination-status]');
   if (!prev || !next || !status) return;
 
   let page = 1;
 
   const render = () => {
-    status.textContent = `${page} of ${totalPages}`;
+    status.forEach(s => s.textContent = `${page}`);
     prev.disabled = page === 1;
     next.disabled = page === totalPages;
   };

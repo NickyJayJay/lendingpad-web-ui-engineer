@@ -2,6 +2,8 @@
 
 A user management table built from a Figma mockup, using semantic HTML, SCSS (BEM), a custom-generated icon font, and light vanilla JavaScript. Bundled with Vite.
 
+**Live demo:** https://nickyjayjay.github.io/lendingpad-web-ui-engineer/
+
 ## Prerequisites
 
 - Node.js 18+ and npm.
@@ -15,6 +17,7 @@ A user management table built from a Figma mockup, using semantic HTML, SCSS (BE
 | `npm run build` | Produce a static build in `dist/`. |
 | `npm run preview` | Serve the contents of `dist/` locally. |
 | `npm run icons` | Regenerate the icon font from the SVGs in `src/assets/svg/`. |
+| `npm run deploy` | Build and publish `dist/` to the `gh-pages` branch. |
 
 ## Project structure
 
