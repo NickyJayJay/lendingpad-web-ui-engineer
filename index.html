@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="LendingPad user management table — sample UI for the Senior Web UI Engineer take-home." />
+  <title>LendingPad — Sample Task</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <script type="module" crossorigin src="./assets/index-Lx64AxCE.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DB3sSYLb.css">
+</head>
+
+<body>
+  <main id="app" class="page">
+    <header>
+      <h1 class="u-sr-only">LendingPad — Sample Task</h1>
+    </header>
+
+    <section class="page__panel" aria-labelledby="users-title">
+      <h2 id="users-title" class="u-sr-only">User list</h2>
+
+      <div class="toolbar" role="search">
+        <button class="btn btn--icon" type="button" aria-label="Filter">
+          <i class="icon icon--filter" aria-hidden="true"></i>
+        </button>
+
+        <label class="input input--search">
+          <i class="icon icon--search input__icon" aria-hidden="true"></i>
+          <span class="u-sr-only">Search users</span>
+          <input class="input__control" type="search" placeholder="Search..." />
+        </label>
+
+        <div class="toolbar__group toolbar__group--end">
+          <button class="btn btn--primary" type="button">
+            <i class="icon icon--plus" aria-hidden="true"></i>
+            Add User
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="table" aria-label="Users">
+          <thead class="table__head">
+            <tr class="table__row">
+              <th class="table__cell table__cell--head table__cell--select" scope="col">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select all rows" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </th>
+              <th class="table__cell table__cell--head" scope="col" aria-sort="ascending">
+                <button class="table__sort" type="button">
+                  #
+                  <span class="table__sort-icons" aria-hidden="true">
+                    <i class="icon icon--up-sorting table__sort-icon table__sort-icon--up"></i>
+                    <i class="icon icon--down-sorting table__sort-icon table__sort-icon--down"></i>
+                  </span>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--head-name" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Name
+                  <span class="table__sort-icons" aria-hidden="true">
+                    <i class="icon icon--up-sorting table__sort-icon table__sort-icon--up"></i>
+                    <i class="icon icon--down-sorting table__sort-icon table__sort-icon--down"></i>
+                  </span>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--description" scope="col">Description</th>
+              <th class="table__cell table__cell--head" scope="col" aria-sort="none">
+                <button class="table__sort" type="button">
+                  Status
+                  <span class="table__sort-icons" aria-hidden="true">
+                    <i class="icon icon--up-sorting table__sort-icon table__sort-icon--up"></i>
+                    <i class="icon icon--down-sorting table__sort-icon table__sort-icon--down"></i>
+                  </span>
+                </button>
+              </th>
+              <th class="table__cell table__cell--head table__cell--numeric" scope="col">Rate</th>
+              <th class="table__cell table__cell--head table__cell--numeric" scope="col">Balance</th>
+              <th class="table__cell table__cell--head table__cell--numeric" scope="col">Deposit</th>
+              <th class="table__cell table__cell--head table__cell--actions" scope="col" aria-label="Row actions"></th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">1</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Alex Smith">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Alex Smith</span>
+                  <span class="table__name-secondary">4372846375</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--open">Open</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">-$270.00
+                <span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">2</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Amadeus Mozart">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Amadeus Mozart</span>
+                  <span class="table__name-secondary">47382756373</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">
+                $270.00<span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">3</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit John Kraus">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">John Kraus</span>
+                  <span class="table__name-secondary">98756474838</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--inactive">Inactive</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">
+                -$20.00<span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">
+                $500.00<span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">4</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Olivia Bennett">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Olivia Bennett</span>
+                  <span class="table__name-secondary">12343265546</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...
+              </td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--due">Past Due</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">
+                -$270.00<span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">5</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Ethan Parker">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Ethan Parker</span>
+                  <span class="table__name-secondary">09803458763</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...
+              </td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">
+                -$350.00<span class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">6</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Liam Foster">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Liam Foster</span>
+                  <span class="table__name-secondary">23456732342</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...
+              </td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--open">Open</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">
+                -$270.00<span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">7</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Ava Mitchell">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Ava Mitchell</span>
+                  <span class="table__name-secondary">1234253647</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...
+              </td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--due">Past Due</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">
+                -$30.00<span class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">8</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Noah Reynolds">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Noah Reynolds</span>
+                  <span class="table__name-secondary">8674563654</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...
+              </td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--paid">Paid</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-negative" data-label="Balance">
+                -$270.00<span class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">9</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Mason Carter">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Mason Carter</span>
+                  <span class="table__name-secondary">5678345645</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--inactive">Inactive</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric table__cell--balance-positive" data-label="Balance">
+                $460.00<span class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric " data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="table__row">
+              <td class="table__cell table__cell--select">
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" aria-label="Select row" />
+                  <span class="checkbox__box" aria-hidden="true"></span>
+                </label>
+              </td>
+              <td class="table__cell table__cell--num" data-label="#">
+                <div class="table__num">
+                  <span class="table__num-text">10</span>
+                  <span class="user">
+                    <button class="user__edit" type="button" aria-label="Edit Sophia Hayes">
+                      <i class="icon icon--pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--name">
+                <div class="table__name">
+                  <span class="table__name-primary">Sophia Hayes</span>
+                  <span class="table__name-secondary">45691347051</span>
+                </div>
+              </td>
+              <td class="table__cell table__cell--description" data-label="Description">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla...</td>
+              <td class="table__cell" data-label="Status"><span class="badge badge--open">Open</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Rate">$70.00 <span
+                  class="table__currency">CAD</span>
+              </td>
+              <td class="table__cell table__cell--numeric" data-label="Balance">$0.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--numeric" data-label="Deposit">$500.00<span
+                  class="table__currency">CAD</span></td>
+              <td class="table__cell table__cell--actions">
+                <div class="dropdown" data-dropdown="row-actions">
+                  <button class="btn btn--icon" type="button" aria-label="Row actions" aria-haspopup="menu"
+                    aria-expanded="false">
+                    <i class="icon icon--three-vertical-dots" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <nav class="pagination" aria-label="Table pagination">
+        <div class="pagination__group">
+          <span class="pagination__status" data-pagination-status>1 </span>- 10 of 97
+        </div>
+
+        <div class="pagination__group pagination__group--end">
+          <span class="pagination__label">Rows per page:</span>
+          <div class="dropdown" data-dropdown="rows-per-page">
+            <button class="btn btn--ghost" type="button" aria-haspopup="menu" aria-expanded="false">
+              <span data-rows-per-page-label>10</span>
+              <i class="icon icon--page-down" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown__menu dropdown__menu--above" role="menu" hidden>
+              <button class="dropdown__item" role="menuitem" type="button" data-value="5">5</button>
+              <button class="dropdown__item dropdown__item--selected" role="menuitem" type="button"
+                data-value="10">10</button>
+              <button class="dropdown__item" role="menuitem" type="button" data-value="15">15</button>
+              <button class="dropdown__item" role="menuitem" type="button" data-value="20">20</button>
+              <button class="dropdown__item" role="menuitem" type="button" data-value="30">30</button>
+              <button class="dropdown__item" role="menuitem" type="button" data-value="30">40</button>
+              <button class="dropdown__item" role="menuitem" type="button" data-value="50">50</button>
+            </div>
+          </div>
+
+          <button class="btn btn--icon" type="button" aria-label="Previous page" data-pagination="prev">
+            <i class="icon icon--page-left" aria-hidden="true"></i>
+          </button>
+          <span class="pagination__status pagination__status--end"><span data-pagination-status>1</span>/10</span>
+          <button class="btn btn--icon" type="button" aria-label="Next page" data-pagination="next">
+            <i class="icon icon--page-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+    </section>
+
+    <!-- Cloned into each row's actions dropdown at init so we don't repeat the
+         menu markup 12 times in the HTML. -->
+    <template id="row-actions-menu">
+      <div class="dropdown__menu" role="menu" hidden>
+        <button class="dropdown__item" role="menuitem" type="button">
+          Invite Consumer
+          <i class="icon icon--invite-consumer" aria-hidden="true"></i>
+        </button>
+        <button class="dropdown__item" role="menuitem" type="button">
+          Send Email
+          <i class="icon icon--send-email" aria-hidden="true"></i>
+        </button>
+        <button class="dropdown__item" role="menuitem" type="button">
+          Manage Cost Details
+          <i class="icon icon--dollar-sign" aria-hidden="true"></i>
+        </button>
+      </div>
+    </template>
+  </main>
+</body>
+
+</html>
