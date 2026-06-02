@@ -2,6 +2,8 @@
 
 A user management table built from a Figma mockup, using semantic HTML, SCSS (BEM), a custom-generated icon font, and light vanilla JavaScript. Bundled with Vite.
 
+Two pages: a list view (`/index.html`) and an edit-record page (`/edit.html?id=N`). The list reads from a shared in-memory data module persisted to `sessionStorage`; the edit page reads / writes the same store so changes survive the round-trip within a session.
+
 **Live demo:** https://nickyjayjay.github.io/lendingpad-web-ui-engineer/
 
 ## Prerequisites
@@ -24,8 +26,9 @@ A user management table built from a Figma mockup, using semantic HTML, SCSS (BE
 ```
 .
 ├── src/
-│   ├── index.html            Page markup
-│   ├── js/                   Light vanilla JS (dropdowns, select-all, sort toggle)
+│   ├── index.html            User list page
+│   ├── edit.html             Edit record page (consumes ?id=N)
+│   ├── js/                   Light vanilla JS (data store, table renderer, edit form, dropdowns, select-all, sort toggle)
 │   ├── assets/
 │   │   └── svg/              Source icons (input to the icon-font pipeline)
 │   ├── public/
