@@ -52,3 +52,19 @@
     color: var(--color-text-secondary);
   }
 }
+
+.input--block {
+  min-width: 0;
+  max-width: none;
+}
+
+.input--textarea {
+  height: auto;
+  align-items: stretch;
+}
+
+.input__prefix {
+  color: var(--color-text-secondary);
+  font-size: t.$font-size-base;
+  flex-shrink: 0;
+}
