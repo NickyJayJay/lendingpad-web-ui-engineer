@@ -7,6 +7,11 @@
 // All interactions are presentational — there is no data layer.
 
 import { createDropdown } from './dropdown.js';
+import { renderUsersTable } from './users-table.js';
+
+// Render the table rows from the data module before any other init runs — the
+// rest of this file queries the rendered DOM (dropdowns, checkboxes, etc.).
+renderUsersTable();
 
 // The row-actions menu is identical on every row; rather than repeat the
 // markup 12 times, we keep it in a <template> and clone it into each row's

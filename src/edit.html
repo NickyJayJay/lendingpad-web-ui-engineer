@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Edit a user record — LendingPad sample task." />
+  <title>Edit user — LendingPad</title>
+  <link rel="stylesheet" href="./styles/main.scss" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+
+<body>
+  <main id="app" class="page page--edit">
+    <header class="page__header">
+      <a class="page__back" href="./index.html" aria-label="Back to user list">
+        <i class="icon icon--page-left" aria-hidden="true"></i>
+        <span>Users</span>
+      </a>
+      <div class="page__title">
+        <h1 class="page__title page__title--name" data-edit-title>Edit user</h1>
+        <span class="page__title page__title--id" data-edit-id hidden></span>
+      </div>
+    </header>
+
+    <section class="page__panel page__panel--edit" aria-labelledby="edit-title">
+      <h2 id="edit-title" class="u-sr-only">Edit record</h2>
+
+      <form class="edit-form" data-edit-form novalidate>
+        <fieldset class="edit-form__section">
+          <legend class="edit-form__legend">Identity</legend>
+          <div class="edit-form__grid edit-form__grid--identity">
+            <div class="edit-form__field">
+              <label class="edit-form__label edit-form__label--required" for="edit-name">Name</label>
+              <label class="input input--block">
+                <input class="input__control" id="edit-name" name="name" type="text" required autocomplete="off" />
+              </label>
+            </div>
+            <div class="edit-form__field">
+              <label class="edit-form__label" for="edit-status">Status</label>
+              <label class="input input--block">
+                <select class="input__control" id="edit-status" name="status" data-edit-status></select>
+              </label>
+            </div>
+            <div class="edit-form__field edit-form__field--full">
+              <label class="edit-form__label" for="edit-description">Description</label>
+              <label class="input input--block input--textarea">
+                <textarea class="input__control edit-form__textarea" id="edit-description" name="description"
+                  rows="4"></textarea>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="edit-form__section">
+          <legend class="edit-form__legend">Account</legend>
+          <div class="edit-form__grid edit-form__grid--account">
+            <div class="edit-form__field">
+              <label class="edit-form__label edit-form__label--required" for="edit-rate">Rate</label>
+              <label class="input input--block">
+                <span class="input__prefix" aria-hidden="true">$</span>
+                <input class="input__control" id="edit-rate" name="rate" type="number" step="0.01" min="0"
+                  inputmode="decimal" required />
+              </label>
+            </div>
+            <div class="edit-form__field">
+              <label class="edit-form__label edit-form__label--required" for="edit-balance">Balance</label>
+              <label class="input input--block">
+                <span class="input__prefix" aria-hidden="true">$</span>
+                <input class="input__control" id="edit-balance" name="balance" type="number" step="0.01"
+                  inputmode="decimal" required />
+              </label>
+            </div>
+            <div class="edit-form__field">
+              <label class="edit-form__label edit-form__label--required" for="edit-deposit">Deposit</label>
+              <label class="input input--block">
+                <span class="input__prefix" aria-hidden="true">$</span>
+                <input class="input__control" id="edit-deposit" name="deposit" type="number" step="0.01" min="0"
+                  inputmode="decimal" required />
+              </label>
+            </div>
+            <div class="edit-form__field">
+              <label class="edit-form__label" for="edit-currency">Currency</label>
+              <label class="input input--block">
+                <select class="input__control" id="edit-currency" name="currency" data-edit-currency></select>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="edit-form__actions">
+          <a class="edit-form__cancel" href="./index.html">Cancel</a>
+          <button class="btn btn--primary edit-form__save" type="submit">Save changes</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="./js/edit.js"></script>
+</body>
+
+</html>

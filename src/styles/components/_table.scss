@@ -220,6 +220,13 @@
 .table__name-primary {
   font-weight: t.$font-weight-medium;
   color: var(--color-text-primary);
+
+  @media (min-width: bp.$breakpoint-md) {
+    max-width: 115px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .table__name-secondary {
