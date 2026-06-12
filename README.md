@@ -1,6 +1,4 @@
-# LendingPad — Web UI Engineer Sample Task
-
-A user management table built from a Figma mockup, using semantic HTML, SCSS (BEM), a custom-generated icon font, and light vanilla JavaScript. Bundled with Vite.
+# A user management table built from a Figma mockup, using semantic HTML, SCSS (BEM), a custom-generated icon font, and light vanilla JavaScript. Bundled with Vite.
 
 Two pages: a list view (`/index.html`) and an edit-record page (`/edit.html?id=N`). The list reads from a shared in-memory data module persisted to `sessionStorage`; the edit page reads / writes the same store so changes survive the round-trip within a session.
 
